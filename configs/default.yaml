@@ -1,0 +1,11 @@
+name: default
+n: 10
+num_instances: 300
+families:
+  - name: uniform
+    count: 300
+mechanisms:
+  - name: local
+epsilons: [0.5, 1.0, 2.0, 5.0]
+num_trials: 75
+base_seed: 42

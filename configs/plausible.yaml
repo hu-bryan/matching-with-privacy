@@ -1,0 +1,27 @@
+# Plausible natural point sets (poster-style): uniform square + two Gaussians.
+# All three mechanisms, swept over epsilon.
+name: plausible
+n: 15
+num_instances: 150
+families:
+  - name: uniform
+    count: 75
+  - name: two_gaussian
+    count: 75
+    separation: 0.5
+    std: 0.15
+mechanisms:
+  - name: local
+  - name: auction
+    m: 3
+    alpha: 0.1
+  - name: dual_sinkhorn
+    beta: 5.0
+    B: 2.0        # clip bound; must exceed the discriminating cost scale
+    num_iters: 50
+epsilons: [0.1, 0.5, 1.0, 2.0, 5.0, 10.0]
+num_trials: 30
+base_seed: 0
+L_type: diam
+parallel: true
+max_workers: 4    # raise toward your CPU core count for more speed

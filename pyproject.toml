@@ -1,0 +1,47 @@
+[project]
+name = "private-matching"
+version = "0.1.0"
+description = "Empirical privacy-utility tradeoffs for metric-DP bipartite matching"
+readme = "README.md"
+authors = [
+    { name = "Brian Hu", email = "brian.h.hu@gmail.com" }
+]
+requires-python = ">=3.11"
+dependencies = [
+    "cma>=4.4.4",
+    "matplotlib>=3.11.0",
+    "numpy>=2.4.6",
+    "pandas>=3.0.3",
+    "pyarrow>=24.0.0",
+    "pyyaml>=6.0.3",
+    "scipy>=1.17.1",
+]
+
+[project.optional-dependencies]
+gurobi = ["gurobipy"]
+
+[project.scripts]
+private-matching = "private_matching.cli:main"
+
+[build-system]
+requires = ["uv_build>=0.11.3,<0.12.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+    "ruff>=0.15.20",
+]
+
+[tool.pytest.ini_options]
+markers = [
+    "slow: expensive tests (privacy Monte Carlo)",
+]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W"]
